@@ -1,8 +1,5 @@
 {
     "sections":{
-        "header_navigation":{
-            "type": "header-navigation"
-        },
         "hero_slider":{
             "type": "hero-slider"
         },
@@ -14,7 +11,6 @@
         }
     },
     "order":[
-        "header_navigation",
         "hero_slider",
         "collection_product_list",
         "final_cta"
