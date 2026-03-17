@@ -1,1 +1,97 @@
-Header
+<header class="header-navigation">
+  <div class="header-navigation__container page-width">
+    <a class="header-navigation__brand" href="{{ routes.root_url }}">
+      {{ shop.name }}
+    </a>
+
+    <nav class="header-navigation__menu" aria-label="Main navigation">
+      <a class="header-navigation__link" href="{{ routes.root_url }}">
+        {{ section.settings.home_label }}
+      </a>
+
+      {%- if section.settings.product_link != blank -%}
+        <a class="header-navigation__link" href="{{ section.settings.product_link }}">
+          {{ section.settings.product_label }}
+        </a>
+      {%- endif -%}
+    </nav>
+  </div>
+</header>
+
+<!-- devo passar a estilização para um arquivo separado -->
+<!-- devo melhorar a estilização -->
+<style>
+  .header-navigation {
+    border-bottom: 1px solid #e5e5e5;
+    background: #ffffff;
+  }
+
+  .header-navigation__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .header-navigation__brand {
+    color: #111111;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  .header-navigation__menu {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
+
+  .header-navigation__link {
+    color: #111111;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+
+  .header-navigation__link:hover {
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 749px) {
+    .header-navigation__container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .header-navigation__menu {
+      flex-wrap: wrap;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Header Navigation",
+  "settings": [
+    {
+      "type": "text",
+      "id": "home_label",
+      "label": "Home label",
+      "default": "Inicial"
+    },
+    {
+      "type": "text",
+      "id": "product_label",
+      "label": "Product page label",
+      "default": "Produto"
+    },
+    {
+      "type": "url",
+      "id": "product_link",
+      "label": "Product page link"
+    }
+  ]
+}
+{% endschema %}
