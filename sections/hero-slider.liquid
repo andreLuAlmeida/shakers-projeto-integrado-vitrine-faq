@@ -1,11 +1,11 @@
 
-<div class="banner-slider-principal">
+<div class="banner-slider-principal banner-slider-principal--{{ section.id }}">
     <div class="blaze-slider">
       <div class="blaze-container">
         <div class="blaze-track-container">
           <div class="blaze-track">
             {% for block in section.blocks %}
-              <div class="slider-banner">
+              <div class=" slider-banner slider-banner--{{ block.id }}">
                 <div class="image-container">
                     <img class="desktop" width="auto" height="auto" src="{{block.settings.image_desktop | img_url: 'nil' }}" alt="Banner Desktop">
                 </div>
@@ -64,14 +64,12 @@
 
                                 display: flex;
                                 flex-direction: column;
-                                align-items: flex-start;
                                 justify-content: center;
                                 gap: 1rem;
 
                                 .title{
                                     margin: 0;
                                     font-size: 5rem;
-                                    color: #fff;
                                     font-weight: 600;
                                     line-height: normal;
                                     font-style: normal;
@@ -165,6 +163,51 @@
     }
 </style>
 
+<style>
+    {%  for block in section.blocks %}
+        .banner-slider-principal--{{ section.id }}{
+            .blaze-slider{
+                .blaze-container{
+                    .blaze-track-container{
+                        .blaze-track{
+                            .slider-banner--{{ block.id }}{
+                                .content{
+                                    --position-horizontal-desktop: {{ block.settings.position_horizontal_desktop }};
+                                    align-items: var(--position-horizontal-desktop);
+                                    --position-vertical-desktop: {{ block.settings.position_vertical_desktop }};
+                                    justify-content: var(--position-vertical-desktop);
+
+                                    .title{
+                                        --color-text:{{
+                                            block.settings.color_text
+                                        }};
+                                        color: var(--color-text);
+                                    }
+
+                                    .description{
+                                        --color-text:{{
+                                            block.settings.color_text
+                                        }};
+                                        color: var(--color-text);
+                                    }
+
+                                    .btn-banner{
+                                        --color-btn-text: {{ block.settings.color_text_btn }};
+                                        --color-btn-bg: {{ block.settings.color_bg_btn }};
+                                        background-color: var(--color-btn-bg);
+                                        color: var(--color-btn-text);
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    {% endfor %}
+</style>
+
 <script>
     document.addEventListener('DOMContentLoaded', function(){
         const el = document.querySelector('.blaze-slider');
@@ -220,6 +263,76 @@
                     "type": "url",
                     "id": "btn_link",   
                     "label": "Link do Botão"
+                },
+                {
+                    "type": "header",
+                    "content": "CORES"
+                },
+                {
+                    "type": "color",
+                    "id": "color_text",
+                    "default": "#fff",
+                    "label": "Cor dos textos"    
+                },
+                {
+                    "type": "color",
+                    "id": "color_text_btn",
+                    "default": "#fff",
+                    "label": "Cor do texto do botão"
+                },
+                {
+                    "type": "color",
+                    "id": "color_bg_btn",
+                    "default": "#fff",
+                    "label": "Cor de fundo do botão"
+                },
+                {
+                    "type": "header",
+                    "content": "Posição Horizontal"
+                },
+                {
+                    "type": "select",
+                    "id": "position_horizontal_desktop",
+                    "label": "Posição Horizontal Desktop",
+                    "default": "flex-start",
+                    "options": [
+                        {
+                            "value": "flex-start",
+                            "label": "Esquerda"
+                        },
+                        {
+                            "value": "center",
+                            "label": "Centro"
+                        },
+                        {
+                            "value": "flex-end",
+                            "label": "Direita"
+                        }
+                    ]
+                },
+                {
+                    "type": "header",
+                    "content": "Posição Vertical"
+                },
+                {
+                    "type": "select",
+                    "id": "position_vertical_desktop",
+                    "label": "Posição Vertical Desktop",
+                    "default": "center",
+                    "options": [
+                        {
+                            "value": "flex-start",
+                            "label": "Topo"
+                        },
+                        {
+                            "value": "center",
+                            "label": "Centro"
+                        },
+                        {
+                            "value": "flex-end",
+                            "label": "Bottom"
+                        }
+                    ]
                 }
             ]
         }
