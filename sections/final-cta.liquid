@@ -1,3 +1,5 @@
+{{ 'final-cta.css' | asset_url | stylesheet_tag }}
+
 <section class="final-cta">
   <div class="page-width">
     <div class="final-cta__wrapper">
@@ -25,84 +27,6 @@
     </div>
   </div>
 </section>
-
-<style>
-    .final-cta {
-        padding: 72px 0;
-    }
-
-    .final-cta__wrapper {
-        padding: 48px 24px;
-        border-radius: 20px;
-        background: #111111;
-        text-align: center;
-    }
-
-    .final-cta__title {
-        margin: 0 0 16px;
-        font-size: 36px;
-        line-height: 1.2;
-        font-weight: 700;
-        color: #ffffff;
-    }
-
-    .final-cta__text {
-        margin: 0 auto 28px;
-        max-width: 680px;
-        font-size: 16px;
-        line-height: 1.6;
-        color: rgba(255, 255, 255, 0.85);
-    }
-
-    .final-cta__button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 50px;
-        padding: 0 28px;
-        border-radius: 999px;
-        background: #ffffff;
-        color: #111111;
-        text-decoration: none;
-        font-size: 15px;
-        font-weight: 700;
-        transition: transform 0.25s ease, opacity 0.25s ease;
-    }
-
-    .final-cta__button:hover {
-        transform: translateY(-2px);
-        opacity: 0.92;
-    }
-
-    .final-cta__button--disabled {
-        opacity: 0.6;
-        cursor: default;
-        pointer-events: none;
-    }
-
-    @media screen and (max-width: 767px) {
-        .final-cta {
-            padding: 56px 0;
-        }
-
-        .final-cta__wrapper {
-            padding: 36px 20px;
-        }
-
-        .final-cta__title {
-            font-size: 28px;
-        }
-
-        .final-cta__text {
-            font-size: 15px;
-            margin-bottom: 24px;
-        }
-
-        .final-cta__button {
-            width: 100%;
-        }
-    }
-</style>
 
 {% schema %}
 {

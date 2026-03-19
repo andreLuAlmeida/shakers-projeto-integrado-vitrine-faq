@@ -1,18 +1,18 @@
 {
-    "sections":{
-        "hero_slider":{
-            "type": "hero-slider"
-        },
-        "collection_product_list": {
-            "type": "collection-product-list"
-        },
-        "final_cta":{
-            "type": "final-cta"
-        }
+  "sections": {
+    "hero": {
+      "type": "hero-slider"
     },
-    "order":[
-        "hero_slider",
-        "collection_product_list",
-        "final_cta"
-    ]
+    "collection": {
+      "type": "collection-product-list"
+    },
+    "cta": {
+      "type": "final-cta"
+    }
+  },
+  "order": [
+    "hero",
+    "collection",
+    "cta"
+  ]
 }

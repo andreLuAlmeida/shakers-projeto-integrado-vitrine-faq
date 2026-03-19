@@ -1,0 +1,53 @@
+.product-faq {
+  padding: 40px 20px;
+  border-top: 1px solid #eee;
+}
+
+.product-faq__wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.product-faq h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 15px 0;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+}
+
+.faq-question::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.faq-item.open .faq-question::after {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  font-size: 14px;
+  color: #444;
+}
+
+.faq-answer p {
+  margin: 10px 0;
+}

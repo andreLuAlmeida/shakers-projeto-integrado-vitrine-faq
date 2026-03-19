@@ -1,0 +1,30 @@
+{{ 'product-faq.css' | asset_url | stylesheet_tag }}
+{{ 'product-faq.js' | asset_url | script_tag }}
+
+{% assign faqs = product.metafields.custom.faq.value %}
+
+{% if faqs and faqs.size > 0 %}
+<section class="product-faq" id="product-faq">
+  <div class="product-faq__wrapper">
+
+    <h2>Perguntas frequentes</h2>
+
+    <div class="faq-list">
+      {% for item in faqs %}
+        <div class="faq-item">
+
+          <button class="faq-question">
+            {{ item.pergunta }}
+          </button>
+
+          <div class="faq-answer">
+            {{ item.resposta }}
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
