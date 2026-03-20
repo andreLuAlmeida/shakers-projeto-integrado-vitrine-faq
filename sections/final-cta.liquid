@@ -1,0 +1,65 @@
+{{ 'final-cta.css' | asset_url | stylesheet_tag }}
+
+<section class="final-cta">
+  <div class="page-width">
+    <div class="final-cta__wrapper">
+      {% if section.settings.heading != blank %}
+        <h2 class="final-cta__title">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <p class="final-cta__text">
+          {{ section.settings.text }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.product != blank %}
+        <a href="{{ section.settings.product.url }}" class="final-cta__button">
+          {{ section.settings.button_label }}
+        </a>
+      {% else %}
+        <span class="final-cta__button final-cta__button--disabled">
+          {{ section.settings.button_label }}
+        </span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA final",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Pronto para comprar?"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texto de apoio",
+      "default": "Escolha seu produto e aproveite agora mesmo."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto do botão",
+      "default": "Compre agora"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Produto de destino"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA final"
+    }
+  ]
+}
+{% endschema %}

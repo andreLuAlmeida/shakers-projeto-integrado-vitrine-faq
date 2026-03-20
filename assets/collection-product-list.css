@@ -1,0 +1,116 @@
+.collection-product-list {
+  padding: 56px 0;
+}
+
+.collection-product-list__header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.collection-product-list__title {
+  margin: 0 0 12px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #111;
+}
+
+.collection-product-list__text {
+  margin: 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.collection-product-list__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.collection-product-list__card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .25s ease;
+}
+
+.collection-product-list__card:hover {
+  transform: translateY(-4px);
+}
+
+.collection-product-list__image-wrapper {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #f5f5f5;
+}
+
+.collection-product-list__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collection-product-list__content {
+  padding-top: 14px;
+}
+
+.collection-product-list__product-title {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.collection-product-list__price {
+  font-size: 15px;
+}
+
+.collection-product-list__price--regular {
+  font-weight: 600;
+}
+
+.collection-product-list__price--sale {
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.collection-product-list__price--compare {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.collection-product-list__footer {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.collection-product-list__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.collection-product-list__button:hover {
+  opacity: 0.9;
+}
+
+.collection-product-list__empty {
+  text-align: center;
+  padding: 32px;
+  background: #f8f8f8;
+  border-radius: 12px;
+  color: #666;
+}

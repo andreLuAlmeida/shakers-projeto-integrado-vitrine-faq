@@ -1,0 +1,128 @@
+{{ 'collection-product-list.css' | asset_url | stylesheet_tag }}
+
+<section class="collection-product-list">
+  <div class="page-width">
+    {% assign selected_collection = section.settings.collection %}
+
+    {% if section.settings.heading != blank or section.settings.text != blank %}
+      <div class="collection-product-list__header">
+        {% if section.settings.heading != blank %}
+          <h2 class="collection-product-list__title">
+            {{ section.settings.heading }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.text != blank %}
+          <p class="collection-product-list__text">
+            {{ section.settings.text }}
+          </p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if selected_collection != blank %}
+      <div class="collection-product-list__grid">
+        {% for product in selected_collection.products limit: section.settings.products_limit %}
+          <a href="{{ product.url }}" class="collection-product-list__card">
+            <div class="collection-product-list__image-wrapper">
+              {% if product.featured_image %}
+                <img
+                  class="collection-product-list__image"
+                  src="{{ product.featured_image | image_url: width: 600 }}"
+                  alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                  loading="lazy"
+                >
+              {% else %}
+                {{ 'product-1' | placeholder_svg_tag: 'collection-product-list__placeholder' }}
+              {% endif %}
+            </div>
+
+            <div class="collection-product-list__content">
+              <h3 class="collection-product-list__product-title">
+                {{ product.title }}
+              </h3>
+
+              <p class="collection-product-list__price">
+                {% if product.compare_at_price > product.price %}
+                  <span class="collection-product-list__price--sale">
+                    {{ product.price | money }}
+                  </span>
+                  <span class="collection-product-list__price--compare">
+                    {{ product.compare_at_price | money }}
+                  </span>
+                {% else %}
+                  <span class="collection-product-list__price--regular">
+                    {{ product.price | money }}
+                  </span>
+                {% endif %}
+              </p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+
+      {% if section.settings.show_collection_button and selected_collection.url != blank %}
+        <div class="collection-product-list__footer">
+          <a href="{{ selected_collection.url }}" class="collection-product-list__button">
+            {{ section.settings.button_label }}
+          </a>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="collection-product-list__empty">
+        <p>Selecione uma coleção no editor da seção.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Listagem de produtos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Nossos produtos"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texto de apoio",
+      "default": "Confira alguns produtos desta coleção."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Coleção"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Quantidade de produtos exibidos",
+      "min": 5,
+      "max": 25,
+      "step": 5,
+      "default": 10
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_button",
+      "label": "Mostrar botão para coleção",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto do botão",
+      "default": "Ver coleção completa"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Listagem de produtos"
+    }
+  ]
+}
+{% endschema %}
